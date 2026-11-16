@@ -1,0 +1,104 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>SoulStar | Your Love, Your Destiny</title>
+<style>
+*{box-sizing:border-box}
+body{margin:0;background:#090909;color:#f5ead2;font-family:Arial,sans-serif}
+header{padding:22px 8%;display:flex;justify-content:space-between;align-items:center;border-bottom:1px solid #302719}
+.logo{font-size:27px;color:#d9b45b;font-weight:bold}
+button{cursor:pointer;border:0;border-radius:25px;padding:12px 23px;background:linear-gradient(120deg,#a77b25,#f0d58a);color:#17120a;font-weight:bold}
+nav button{margin-left:8px}
+.hero{text-align:center;padding:95px 20px 75px;background:radial-gradient(ellipse at center,#382710 0%,#15100a 45%,#090909 75%)}
+.hero h1{font-size:clamp(38px,7vw,65px);color:#e5c477;margin:15px 0}
+.hero p{color:#c9b995;line-height:1.8}
+h2{color:#e5c477}
+section{padding:45px 8%;text-align:center}
+.features{display:grid;grid-template-columns:repeat(auto-fit,minmax(210px,1fr));gap:18px}
+.card{background:#17140f;border:1px solid #4a3920;border-radius:15px;padding:27px}
+.card .symbol{font-size:35px}
+.card h3{color:#e5c477}
+.card p{color:#bdb19b;line-height:1.6}
+footer{text-align:center;padding:30px;color:#a99570;border-top:1px solid #302719}
+.modal{display:none;position:fixed;inset:0;background:#000d;align-items:center;justify-content:center;padding:20px}
+.modal-content{background:#19150f;border:1px solid #b18a43;border-radius:16px;padding:28px;width:100%;max-width:390px}
+.modal input{display:block;width:100%;padding:13px;margin:12px 0;background:#090909;border:1px solid #554323;border-radius:8px;color:white}
+.modal button{width:100%;margin-top:12px}
+.close{float:right;background:transparent;color:#e5c477;font-size:20px;padding:0}
+a{color:#e5c477}
+</style>
+</head>
+<body>
+<header>
+<div class="logo">✦ SoulStar</div>
+<nav>
+<button onclick="showAuth('login')">Login</button>
+<button onclick="showAuth('signup')">Sign Up</button>
+</nav>
+</header>
+
+<div class="hero">
+<div style="font-size:48px">💛 ✨ 💛</div>
+<h1>Discover Your Soul Connection</h1>
+<p>Love is written in the stars.<br>
+Discover compatibility, explore relationships<br>
+and follow your heart.</p>
+<button onclick="showAuth('signup')">Start Your Journey ❤️</button>
+</div>
+
+<section>
+<h2>Explore SoulStar</h2>
+<div class="features">
+<div class="card"><div class="symbol">❤️</div><h3>Love Compatibility</h3><p>Explore romantic compatibility and connections.</p></div>
+<div class="card"><div class="symbol">💬</div><h3>AI Love Chat</h3><p>Share your thoughts and explore relationship questions.</p></div>
+<div class="card"><div class="symbol">🔮</div><h3>Love Horoscope</h3><p>Discover daily love-themed horoscope insights.</p></div>
+<div class="card"><div class="symbol">💌</div><h3>Love Messages</h3><p>Find sweet words to express your feelings.</p></div>
+<div class="card"><div class="symbol">💕</div><h3>Relationship Advice</h3><p>Explore helpful ideas for healthy relationships.</p></div>
+<div class="card"><div class="symbol">⭐</div><h3>Soulmate Finder</h3><p>Explore what you value in a meaningful connection.</p></div>
+</div>
+</section>
+
+<footer>✦ SoulStar | Love • Trust • Connection<br><br>Free for everyone © 2026</footer>
+
+<div class="modal" id="auth">
+<div class="modal-content">
+<button class="close" onclick="closeAuth()">✕</button>
+<h2 id="formTitle">Welcome to SoulStar</h2>
+<form onsubmit="event.preventDefault();alert('Email authentication will be activated after Supabase setup.');">
+<input type="text" id="name" placeholder="Your name" style="display:none">
+<input type="email" placeholder="Email address" required>
+<input type="password" placeholder="Password" minlength="8" required>
+<button type="submit" id="submitText">Login</button>
+</form>
+<p style="text-align:center;font-size:13px;color:#c9b995">
+<button style="background:none;color:#e5c477" onclick="switchAuth()">Switch Login / Sign Up</button>
+</p>
+</div>
+</div>
+
+<script>
+let mode='login';
+function showAuth(m){
+mode=m;
+document.getElementById('auth').style.display='flex';
+updateForm();
+}
+function closeAuth(){
+document.getElementById('auth').style.display='none';
+}
+function switchAuth(){
+mode=mode==='login'?'signup':'login';
+updateForm();
+}
+function updateForm(){
+document.getElementById('formTitle').textContent=mode==='login'?'Welcome Back ❤️':'Create Your Account ✨';
+document.getElementById('name').style.display=mode==='signup'?'block':'none';
+document.getElementById('name').required=mode==='signup';
+document.getElementById('submitText').textContent=mode==='login'?'Login':'Create Account';
+}
+</script>
+</body>
+</html>
